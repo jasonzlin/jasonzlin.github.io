@@ -131,11 +131,8 @@ var testCounter = 0;
 // attempts to search spotify for tracks from youtube playlist
 function searchSpotify(trackList, index, constraint) {
 	
-	var namesElement = document.getElementById('names');
 	var title = trackList[index].snippet.title;
-	
-	var formattedTitle = title.replace(/[^A-Z0-9']+/ig, " ").toLowerCase();
-		
+	var formattedTitle = title.replace(/[^A-Z0-9']+/ig, " ").toLowerCase();		
 	var hasMV = formattedTitle.indexOf('music video');
 		
 	if(hasMV > -1) {
@@ -160,11 +157,6 @@ function searchSpotify(trackList, index, constraint) {
 				var found = response;
 				var result = found.tracks.items[0];
 				if(result != null) {
-					var title = result.name;
-					var artist = result.artists;
-					var liElement = document.createElement('li');
-					liElement.innerText = artist[0].name + ' - ' + title;
-					namesElement.appendChild(liElement);
 					searchList.push(result.uri);
 					console.log("found " + formattedTitle);
 					testCounter++;
@@ -199,6 +191,16 @@ function searchSpotify(trackList, index, constraint) {
 function createPlaylist() {
 	
 	
+	var header = document.getElementById('header');
+	var paragraph = document.getElementById('paragraph');
+	var inputBox = document.getElementById('inputBox');
+	
+	header.innerHTML = "How would you like to name your playlist?";
+	paragraph.style.display = 'none';
+	
+	inputBox.value="";
+	
+	inputBox.onClick() = function() {
 	$.ajax({
 		url: 'https://api.spotify.com/v1/me',
 		headers: {
@@ -208,7 +210,7 @@ function createPlaylist() {
 			var user = response;		
 			user_id = user.id;
 				
-			var testData = { 'name' : "New Playlist"};
+			var testData = { 'name' : inputBox.val()};
 				
 			$.ajax({
 				url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists',
@@ -233,7 +235,9 @@ function createPlaylist() {
 			var error = response;
 			console.log(error);
 		}
-	});
+		});
+	}
+		
 }
 
 //last step of adding all spotify tracks to the playlist

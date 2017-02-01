@@ -65,7 +65,7 @@ $(document).ready(function () {
 				var mainView = document.getElementById('mainContent');
 				
                 loginForm.style.display = 'none';
-				main.style.display = 'block';
+				mainView.style.display = 'block';
 				console.log('test');
                 },
             error: function(){

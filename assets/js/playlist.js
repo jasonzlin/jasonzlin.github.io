@@ -254,7 +254,7 @@ function spotifyPlaylist() {
 			console.log(error);
 		}
 		});
-	});
+	
 	
 	
 }

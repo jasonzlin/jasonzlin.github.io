@@ -237,7 +237,7 @@ function spotifyPlaylist() {
 				url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists',
 				type: 'POST',
 				headers: {
-					'Authorization': 'Bearer ' + apotify_token,
+					'Authorization': 'Bearer ' + spotify_token,
 					'Content-Type': 'application/json'
 				},
 				data: JSON.stringify(testData),

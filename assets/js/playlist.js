@@ -6,7 +6,6 @@ $(document).ready(function () {
         setSpotifyDetails(spotify_token);
     }
 
-	$('#submitButton').attr('disabled', true);
     $('.spotify-login-button').click(function(){
         handleSpotifyConnect();
     });
@@ -150,7 +149,7 @@ function loginWithSpotify() {
     var scopes = 'playlist-modify-private';
 
     if (document.location.hostname == 'localhost') {
-        redirect_uri = 'http://localhost:8080/playlist/popup.html';
+        redirect_uri = 'https://jasonzlin.github.io/playlist.html';
     }
 
     var url = 'https://accounts.spotify.com/authorize?client_id=' + client_id +

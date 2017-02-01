@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var accepted_origin = "http://jasonzlin.github.io";
+    var accepted_origin = "https://jasonzlin.github.io";
 
     var hash = {};
 

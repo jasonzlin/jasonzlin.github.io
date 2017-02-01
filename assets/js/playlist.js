@@ -19,7 +19,7 @@ $(document).ready(function () {
     function handleSpotifyConnect(){
         var SPOTIFY_AUTH_URL = 'https://accounts.spotify.com/authorize',
             SPOTIFY_CLIENT_ID = 'f6b4b574524748fda00a6abdde7682ca',
-            SPOTIFY_REDIRECT_URL = 'http://jasonzlin.github.io/callback_spotify.html',
+            SPOTIFY_REDIRECT_URL = 'https://jasonzlin.github.io/callback_spotify.html',
             SPOTIFY_RESPONSE_TYPE = 'token';
 
         var authURL =

@@ -6,37 +6,68 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/playlist.js"></script>
-    <style>
-        .container{
-            padding-top: 50px;
-        }
-        .button-container{
-            text-align: center;
-            margin-top:20px;
-        }
-    </style>
+	
+	
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<style>
+	#login {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+	}
+	
+	#loginButton {
+		position:fixed;
+		left:50%;
+		top:70%;
+		transform: translate(-50%, -50%);
+	}
+	
+	.spotify-login-form {
+	
+	}
+	
+	.main-content {
+		display:none;
+	}
+	
+	.hidden {
+		visibility: hidden;
+	}
+	</style>
 </head>
+
+
 <body>
-    <div class="container">
-
-        <div class="panel panel-default spotify">
-            <div class="panel-heading">
-                <h3 class="panel-title">Spotify</h3>
-            </div>
-            <div class="panel-body">
-                <div class="spotify-login-form">
-                    <div class="form-group button-container">
-                        <input class="btn btn-success spotify-login-button" type="button" value="Spotify Login">
-                    </div>
-                </div>
-                <div class="spotify-details hidden">
-                    <div class="form-group button-container">
-                        <input class="btn btn-info spotify-logout-button" type="button" value="Logout">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
+	<div id="wrapper">
+		<!-- Main Login -->
+		<div id="main"  class="spotify-login-form">
+			<div class="inner">						
+				<!-- Banner -->
+				<section id="banner">				
+					<div class="content">	
+						<header id ="login">
+						<h1>Please log in to Spotify first
+						</h1>
+						</header>
+						<p>
+							<a class = "spotify-login-button" id = "loginButton" href="#" style="border-bottom: none">
+							<img src="images/spotify.png" style="height: 20vh; width: 20vh"/> </a>
+						</p>
+					</div>
+				</section>
+			</div>
+		</div>
+		
+		<div id="main" class="main-content">
+			<div class="content">
+				<header>
+					<h1>SUCCESS</h1>
+				</header>
+			</div>
+		</div>
+	</div>
+    
 </body>
 </html>

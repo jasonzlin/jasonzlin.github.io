@@ -206,15 +206,14 @@ function createPlaylist() {
 	
 	var header = document.getElementById('header');
 	var paragraph = document.getElementById('paragraph');
-	var inputBox = document.getElementById('inputBox');
+	document.getElementById('inputBox').;
 	var submitButton = document.getElementById('submitButton');
 	
 	header.innerHTML = "How would you like to name your playlist?";
 	paragraph.style.display = 'none';
 	
-	inputBox.value="";
 	
-	document.getElementById('submitButton').onClick = function(){
+	document.getElementById('submitButton').setAttribute('onClick', function(){
 	$.ajax({
 		url: 'https://api.spotify.com/v1/me',
 		headers: {
@@ -250,7 +249,7 @@ function createPlaylist() {
 			console.log(error);
 		}
 		});
-	}
+	});
 		
 }
 

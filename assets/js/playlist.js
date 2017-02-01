@@ -206,14 +206,19 @@ function createPlaylist() {
 	
 	var header = document.getElementById('header');
 	var paragraph = document.getElementById('paragraph');
-	document.getElementById('inputBox').val = "";
+	document.getElementById('inputBox').value = "";
 	var submitButton = document.getElementById('submitButton');
 	
 	header.innerHTML = "How would you like to name your playlist?";
 	paragraph.style.display = 'none';
 	
 	
-	document.getElementById('submitButton').setAttribute('onClick', function(){
+	document.getElementById('submitButton').setAttribute('onClick', 'spotifyPlaylist()');
+	
+		
+}
+
+function spotifyPlaylist() {
 	$.ajax({
 		url: 'https://api.spotify.com/v1/me',
 		headers: {
@@ -250,7 +255,8 @@ function createPlaylist() {
 		}
 		});
 	});
-		
+	
+	
 }
 
 //last step of adding all spotify tracks to the playlist

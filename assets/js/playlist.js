@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var spotify_token = localStorage.getItem('spotify_token');
+    spotify_token = localStorage.getItem('spotify_token');
 
     if(localStorage.getItem('spotify_token')){
         setSpotifyDetails(spotify_token);
@@ -114,7 +114,7 @@ function handleAPILoaded() {
 //global variables
 var user_id;
 var playlistID;
-var accessToken;
+var spotify_token;
 var constraint = 0;
 var trackList = [];
 var searchList = [];
@@ -219,6 +219,8 @@ function createPlaylist() {
 }
 
 function spotifyPlaylist() {
+	
+	spotify_token =  localStorage.getItem("spotify_token");
 	$.ajax({
 		url: 'https://api.spotify.com/v1/me',
 		headers: {

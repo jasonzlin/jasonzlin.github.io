@@ -13,17 +13,17 @@
 	<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 	<link rel="stylesheet" href="assets/css/main.css" />
 	
-	
 	<style>
 	
 	.spotify-login-form {
 	
 	}
+	
 	#login, #main  {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
 	}
 	
 	#loginButton {
@@ -48,6 +48,21 @@
 		top: 50%;
 		transform: translate(-50%, -50%);
 	}
+	
+	
+    .loading{
+		display:none;
+        width: 200px;
+        height: 30px;
+        background: #eee;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        text-align: center;
+    }
 	
 	</style>
 </head>
@@ -86,6 +101,11 @@
 				
 			</div>
 		</div>
+		
+		<div class="loading" id = "loading">
+			<h1> LOADING...</h1>
+		</div>
+		
 	</div>
     
 </body>

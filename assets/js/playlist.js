@@ -126,6 +126,8 @@ function search() {
 	searchYoutube(null);
 	var mainView = document.getElementById('mainContent');
 	mainView.style.display = "none";
+	var loadingView = document.getElementById('loading');
+	loadingView.style.display = 'block';
 }
 
 var testCounter = 0;
@@ -200,17 +202,21 @@ function createPlaylist() {
 	var mainView = document.getElementById('mainContent');
 	mainView.style.display = "block";
 	
+	var loadingView = document.getElementById('loading');
+	loadingView.style.display = "none";
+	
 	
 	var header = document.getElementById('header');
 	var paragraph = document.getElementById('paragraph');
 	var inputBox = document.getElementById('inputBox');
+	var submitButton = document.getElementById('submitButton');
 	
 	header.innerHTML = "How would you like to name your playlist?";
 	paragraph.style.display = 'none';
 	
 	inputBox.value="";
 	
-	inputBox.onClick() = function() {
+	submitButton.onClick() = function() {
 	$.ajax({
 		url: 'https://api.spotify.com/v1/me',
 		headers: {

@@ -65,7 +65,6 @@ $(document).ready(function () {
 				
                 loginForm.style.display = 'none';
 				mainView.style.display = 'block';
-				console.log('test');
                 },
             error: function(){
                 // handle error
@@ -122,43 +121,9 @@ var searchList = [];
 var sum = 0;
 var total = 0;
 
-//helper method to get access token
-var qs = (function(a) {
-    if (a == "") return {};
-    var b = {};
-    for (var i = 0; i < a.length; ++i)
-    {
-        var p=a[i].split('=', 2);
-        if (p.length == 1)
-            b[p[0]] = "";
-        else
-            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-    }
-    return b;
-})(window.location.hash.substr(1).split('&'));
-
 //button clicked method, attempts to search for youtube playlist
 function search() {	
 	searchYoutube(null);
-}
-
-//Login button clicked
-function loginWithSpotify() {
-    var client_id = 'f6b4b574524748fda00a6abdde7682ca';
-    var redirect_uri = 'https://jasonzlin.github.io/';
-    var scopes = 'playlist-modify-private';
-
-    if (document.location.hostname == 'localhost') {
-        redirect_uri = 'https://jasonzlin.github.io/playlist.html';
-    }
-
-    var url = 'https://accounts.spotify.com/authorize?client_id=' + client_id +
-        '&response_type=token' +
-        '&scope=' + encodeURIComponent(scopes) +
-        '&redirect_uri=' + encodeURIComponent(redirect_uri) +
-		'&show_dialog=true';
-    document.location = url;
-	
 }
 
 var testCounter = 0;
@@ -168,25 +133,24 @@ function searchSpotify(trackList, index, constraint) {
 	
 	var namesElement = document.getElementById('names');
 	var title = trackList[index].snippet.title;
-	if(window.location.hash) {
-		accessToken = qs["access_token"];
-		var formattedTitle = title.replace(/[^A-Z0-9']+/ig, " ").toLowerCase();
+	
+	var formattedTitle = title.replace(/[^A-Z0-9']+/ig, " ").toLowerCase();
 		
-		var hasMV = formattedTitle.indexOf('music video');
+	var hasMV = formattedTitle.indexOf('music video');
 		
-		if(hasMV > -1) {
-				formattedTitle = formattedTitle.substring(0, hasMV) + formattedTitle.substring(hasMV + 'music video'.length);
-		} else {
-			hasMV = formattedTitle.indexOf('mv');
-			if(hasMV > -1) {				
-				formattedTitle = formattedTitle.substring(0, hasMV) + formattedTitle.substring(hasMV + 2);
-			}
-			hasMV = formattedTitle.indexOf('m v');
-			if(hasMV > -1) {
-				formattedTitle = formattedTitle.substring(0, hasMV) + formattedTitle.substring(hasMV + 3);
-			}
-			
+	if(hasMV > -1) {
+			formattedTitle = formattedTitle.substring(0, hasMV) + formattedTitle.substring(hasMV + 'music video'.length);
+	} else {
+		hasMV = formattedTitle.indexOf('mv');
+		if(hasMV > -1) {				
+			formattedTitle = formattedTitle.substring(0, hasMV) + formattedTitle.substring(hasMV + 2);
 		}
+		hasMV = formattedTitle.indexOf('m v');
+		if(hasMV > -1) {
+			formattedTitle = formattedTitle.substring(0, hasMV) + formattedTitle.substring(hasMV + 3);
+		}
+			
+	}
 				
 		$.ajax({
 			url: 'https://api.spotify.com/v1/search?q=' + formattedTitle + "&type=track",
@@ -234,12 +198,11 @@ function searchSpotify(trackList, index, constraint) {
 //attempts to create playlist
 function createPlaylist() {
 	
-	accessToken = qs["access_token"];
 	
 	$.ajax({
 		url: 'https://api.spotify.com/v1/me',
 		headers: {
-			'Authorization': 'Bearer ' + accessToken
+			'Authorization': 'Bearer ' + spotify_token
 		},
 		success: function(response) {
 			var user = response;		
@@ -251,7 +214,7 @@ function createPlaylist() {
 				url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists',
 				type: 'POST',
 				headers: {
-					'Authorization': 'Bearer ' + accessToken,
+					'Authorization': 'Bearer ' + apotify_token,
 					'Content-Type': 'application/json'
 				},
 				data: JSON.stringify(testData),
@@ -285,7 +248,7 @@ function addToPlaylist(test) {
 		$.ajax({
 			url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists/' + playlistID + '/tracks',
 			headers: {
-				'Authorization': 'Bearer ' + accessToken,
+				'Authorization': 'Bearer ' + spotify_token,
 				'Content-Type': 'application/json'
 			},
 			type: 'POST',

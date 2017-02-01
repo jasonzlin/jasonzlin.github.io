@@ -206,7 +206,7 @@ function createPlaylist() {
 	
 	var header = document.getElementById('header');
 	var paragraph = document.getElementById('paragraph');
-	document.getElementById('inputBox').;
+	document.getElementById('inputBox').val = "";
 	var submitButton = document.getElementById('submitButton');
 	
 	header.innerHTML = "How would you like to name your playlist?";

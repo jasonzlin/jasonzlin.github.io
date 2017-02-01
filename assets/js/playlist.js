@@ -162,11 +162,8 @@ function searchSpotify(trackList, index, constraint) {
 				var result = found.tracks.items[0];
 				if(result != null) {
 					searchList.push(result.uri);
-					console.log("found " + formattedTitle);
 					testCounter++;
-					console.log(testCounter);
 				}  else if(constraint == 1){
-					console.log("Could not find " + formattedTitle);
 					index--;
 					var name = trackList[index].snippet.title;
 					constraint = 0;
@@ -242,7 +239,6 @@ function spotifyPlaylist() {
 				},
 				data: JSON.stringify(testData),
 				success: function(response) {
-					console.log("Created playlist");
 					playlistID = response.id;
 					addToPlaylist(searchList);
 				},
@@ -269,7 +265,6 @@ function addToPlaylist(test) {
 	for (i=0,j = test.length; i<j; i+=chunk) {
 		temparray = test.slice(i,i+chunk);
 		var jsonObject = {'uris' : temparray};
-		console.log("Attempting to add to playlist");
 	
 		$.ajax({
 			url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists/' + playlistID + '/tracks',
@@ -281,7 +276,6 @@ function addToPlaylist(test) {
 			data: JSON.stringify(jsonObject),
 			success: function(response) {
 				var added = response;
-				console.log(added);
 				document.getElementById('mainContent').style.display = 'none';
 				document.getElementById('endscreen').style.display = 'block';
 				//display success
@@ -317,7 +311,6 @@ function searchYoutube(PageToken) {
 				total = response.pageInfo.totalResults;
 				sum += jsonObject.items.length;
 				trackList = trackList.concat(jsonObject.items);
-				console.log(jsonObject.items);
 				if(sum < total) 
 					searchYoutube(response.result.nextPageToken);
 				else 

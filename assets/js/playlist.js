@@ -191,7 +191,7 @@ function searchSpotify(trackList, index, constraint) {
 				console.log(error);
 			}
 		});
-	}
+	
 	
 }
 

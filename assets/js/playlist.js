@@ -214,7 +214,7 @@ function createPlaylist() {
 	
 	inputBox.value="";
 	
-	submitButton.onClick() = function selectName(){
+	document.getElementById('submitButton').onClick = function(){
 	$.ajax({
 		url: 'https://api.spotify.com/v1/me',
 		headers: {

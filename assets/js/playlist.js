@@ -282,6 +282,8 @@ function addToPlaylist(test) {
 			success: function(response) {
 				var added = response;
 				console.log(added);
+				document.getElementById('mainContent').style.display = 'none';
+				document.getElementById('endscreen').style.display = 'block';
 				//display success
 			}, error: function(response) {
 				var error = response;

@@ -2,15 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Auth Login</title>
+    <title>Playlist Converter</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/playlist.js"></script>
-	
-	
+	<script src="assets/js/iframe_api.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="https://apis.google.com/js/api.js"></script>
+	<script src="assets/js/spotify-web-api.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 	<link rel="stylesheet" href="assets/css/main.css" />
+	
+	
 	<style>
-	#login {
+	
+	.spotify-login-form {
+	
+	display:none;
+	}
+	#login, #main  {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -20,12 +30,24 @@
 	#loginButton {
 		position:fixed;
 		left:50%;
-		top:70%;
+		top:50%;
+		transform: translate(-50%, -50%);
+	}
+	
+	#submitButton {
+	
+		position:fixed;
+		left:50%;
+		top:100%;
 		transform: translate(-50%, -50%);
 	}
 	
 	.main-content {
-		display:none;
+		display:block;
+		position: fixed;
+		left: 50%;
+		top: 50%;
+    transform: translate(-50%, -50%);
 	}
 	
 	</style>
@@ -53,11 +75,16 @@
 			</div>
 		</div>
 		
-		<div id="main" class="main-content">
+		<div class="main-content">
 			<div class="content">
 				<header>
-					<h1>SUCCESS</h1>
+					<h2>Please paste the youtube playlist ID:</h2>
+					
+					<p>https://www.youtube.com/playlist?list=
+					<input type="text" id="inputBox"></input> </p>
+					<input id="submitButton" onClick="search()" type="submit"></input>
 				</header>
+				
 			</div>
 		</div>
 	</div>

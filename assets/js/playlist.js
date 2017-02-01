@@ -60,8 +60,11 @@ $(document).ready(function () {
             },
             success: function(response){
                 var username = response.id;
-                $('.spotify-login-form').display = 'none';
-				$('.main-view').display = 'block';
+				var loginForm = document.getElementById('mainlogin');
+				var mainView = document.getElementById('main');
+				
+                loginForm.style.display = 'none';
+				main.style.display = 'block';
 				console.log('test');
                 },
             error: function(){

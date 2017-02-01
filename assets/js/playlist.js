@@ -124,6 +124,8 @@ var total = 0;
 //button clicked method, attempts to search for youtube playlist
 function search() {	
 	searchYoutube(null);
+	var mainView = document.getElementById('mainContent');
+	mainView.style.display = "none";
 }
 
 var testCounter = 0;
@@ -179,7 +181,11 @@ function searchSpotify(trackList, index, constraint) {
 			},
 			error: function(response) {
 				var error = response;
-				
+				if(error.status == 429) {
+					await sleep(2000);
+					searchSpotify(trackList, index, constraint);
+				}
+					
 				console.log(error);
 			}
 		});
@@ -189,6 +195,10 @@ function searchSpotify(trackList, index, constraint) {
 
 //attempts to create playlist
 function createPlaylist() {
+	
+	
+	var mainView = document.getElementById('mainContent');
+	mainView.style.display = "block";
 	
 	
 	var header = document.getElementById('header');
@@ -301,6 +311,10 @@ function searchYoutube(PageToken) {
 			
 			}
 		});
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 

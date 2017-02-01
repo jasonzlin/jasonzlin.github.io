@@ -221,6 +221,7 @@ function createPlaylist() {
 function spotifyPlaylist() {
 	
 	spotify_token =  localStorage.getItem("spotify_token");
+	var name = document.getElementById("inputBox").value;
 	$.ajax({
 		url: 'https://api.spotify.com/v1/me',
 		headers: {
@@ -230,7 +231,7 @@ function spotifyPlaylist() {
 			var user = response;		
 			user_id = user.id;
 				
-			var testData = { 'name' : inputBox.val()};
+			var testData = { 'name' : name};
 				
 			$.ajax({
 				url: 'https://api.spotify.com/v1/users/' + user_id + '/playlists',

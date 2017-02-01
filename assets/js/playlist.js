@@ -184,11 +184,9 @@ function searchSpotify(trackList, index, constraint) {
 			error: function(response) {
 				var error = response;
 				if(error.status == 429) {
-					await sleep(2000);
-					searchSpotify(trackList, index, constraint);
+					setTimeout(searchSpotify(trackList, index, constraint), 2000);
 				}
 					
-				console.log(error);
 			}
 		});
 	
@@ -318,10 +316,3 @@ function searchYoutube(PageToken) {
 			}
 		});
 }
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-
-

@@ -18,7 +18,6 @@
 	
 	.spotify-login-form {
 	
-	display:none;
 	}
 	#login, #main  {
     position: fixed;
@@ -43,11 +42,11 @@
 	}
 	
 	.main-content {
-		display:block;
+		display:none;
 		position: fixed;
 		left: 50%;
 		top: 50%;
-    transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
 	}
 	
 	</style>
@@ -75,7 +74,7 @@
 			</div>
 		</div>
 		
-		<div class="main-content">
+		<div id="mainContent" class="main-content">
 			<div class="content">
 				<header>
 					<h2>Please paste the youtube playlist ID:</h2>

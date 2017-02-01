@@ -6,6 +6,7 @@ $(document).ready(function () {
         setSpotifyDetails(spotify_token);
     }
 
+	$('#submitButton').attr('disabled', true);
     $('.spotify-login-button').click(function(){
         handleSpotifyConnect();
     });
@@ -61,7 +62,7 @@ $(document).ready(function () {
             success: function(response){
                 var username = response.id;
 				var loginForm = document.getElementById('mainlogin');
-				var mainView = document.getElementById('main');
+				var mainView = document.getElementById('mainContent');
 				
                 loginForm.style.display = 'none';
 				main.style.display = 'block';
@@ -108,7 +109,7 @@ function loadClient() {
 // https://developers.google.com/api-client-library/javascript/dev/dev_jscript#loading-the-client-library-and-the-api
 // After the API loads, call a function to enable the search box.
 function handleAPILoaded() {
-  $('#search-button').attr('disabled', false);
+  $('#submitButton').attr('disabled', false);
 }
 
 
@@ -310,7 +311,7 @@ function addToPlaylist(test) {
 function searchYoutube(PageToken) {
 	
 	var test = 'test';
-	var q = $('#query').val();
+	var q = $('#inputBox').val();
 
 	var request = gapi.client.youtube.playlistItems.list({
         part: 'snippet',
